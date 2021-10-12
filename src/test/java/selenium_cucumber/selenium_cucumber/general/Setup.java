@@ -26,7 +26,7 @@ public final class Setup {
 	private static JavascriptExecutor jsExecutor;
 	private static Actions actions;
 	private static WaitingObject waitingObject;
-	private static String defaultURL = "https://webgoheavy-testing.gsoftinnovation.net/admin";
+	private static String defaultURL = "https://webgoheavy-qa.gsoftinnovation.net/admin";//"https://webgoheavy-testing.gsoftinnovation.net/admin";
 	@Before
 	public void InitSetup() {
 		String browser = System.getProperty("browser");

@@ -76,11 +76,15 @@ public class VehiclePage extends PageObject{
 		waitForSpinningElementDissapear();
 		Setup.getWait().thread(500);
 		this.getWebElement(By.xpath("//input[@id='vehicleTypeId'and @role='combobox']")).click();
+		this.getWebElement(By.xpath("//div[@class='rc-virtual-list-holder-inner']")).click();
+		Setup.getWait().thread(500);	
+	}
+	public void setYear() {
+		waitForSpinningElementDissapear();
 		Setup.getWait().thread(500);
-		WebElement vehtypelist= getWebElement(By.xpath("//div[@class='ant-select-item ant-select-item-option']"));
-		List <WebElement> itemslist = vehtypelist.findElements(By.xpath("//div[@class='ant-select-item ant-select-item-option']"));
-		Setup.getActions().moveToElement(itemslist.get(1)).build().perform();
-		Setup.getActions().click(itemslist.get(1)).build().perform();
+		this.getWebElement(By.xpath("//input[@placeholder='Enter the vehicle year']")).click();
+		this.getWebElement(By.xpath("//table[@class='ant-picker-content']")).click();
+		Setup.getWait().thread(500);
 	}
 	public void setSaveFormElementsStep1() {//setear los elementos de esta vista
         stepOne();//verifico si estoy en la vista 1
@@ -108,12 +112,10 @@ public class VehiclePage extends PageObject{
 		//Setup.getActions().moveToElement(make).click().perform();
 
 		//Setting Vehicle Year
-		WebElement year = this.getWebElement(By.xpath("//div[@style='left: 806px; top: 0px;']/descendant::td[@title='2020']/descendant::div[@class='ant-picker-cell-inner']"));
-		//coger el texto del input asociado al picker
-		year.click();
+		setYear();
 		
 		// Scrolling the page to get the element activated
-				this.scroll(formScroll, By.id("payload"));
+			//	this.scroll(formScroll, By.id("payload"));
 				
 	    //Setting Playload
 		WebElement playload = this.getWebElement(By.id("playload"));
