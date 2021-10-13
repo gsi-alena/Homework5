@@ -65,11 +65,12 @@ public class VehiclePage extends PageObject{
 		Assert.assertTrue(i.getText().equals("Current Insurance Certificate Picture"));
 	}
 	//Arreglar
-	public void isVehicleList() {
+	public boolean isVehicleList() {
 		//Estoy en Vehicles
 		WebElement i = getWebElement(By.xpath("//div[contains(@class,'ant-steps-item-title')]"));
 		boolean a = i.getText().equals("Vehicle");
 		Assert.assertTrue(i.getText().equals("Vehicle"));
+		return a;
 	}
 
 	public void setVehicleType() {
@@ -115,7 +116,7 @@ public class VehiclePage extends PageObject{
 		setYear();
 		
 		// Scrolling the page to get the element activated
-			//	this.scroll(formScroll, By.id("payload"));
+			this.scroll(formScroll, By.id("payload"));
 				
 	    //Setting Playload
 		WebElement playload = this.getWebElement(By.id("playload"));
@@ -279,6 +280,10 @@ public class VehiclePage extends PageObject{
 		// Checking that popup is in the right
 		String style = parent.getAttribute("style");
 		Assert.assertTrue("Popup is not in the right corner.", style.contains("right: 0px"));
+		
+		//Verify the user is in vehicle list
+		boolean isvehlistview = isVehicleList();
+		Assert.assertTrue(isvehlistview);
 
 	}
 }
